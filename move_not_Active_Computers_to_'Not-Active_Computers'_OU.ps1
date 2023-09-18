@@ -82,7 +82,7 @@ for($k=0 ; $k -lt $x ; $k++)
         $IP_Address = Get-ADComputer -Identity $j -Properties IPv4Address | ForEach-Object {$_.IPv4Address}
         $last_logon = Get-ADComputer -Identity $j -Properties LastLogonDate | ForEach-Object {$_.LastLogonDate}
 	$DistName   = Get-ADComputer -Identity $j -Properties DistinguishedName | ForEach-Object {$_.DistinguishedName}
-        "Device Name : $j `n" + "IP Address : $IP_Address `n" + "Last logon Date : $last_logon `n" + "$DistName `n" >> "\\"server-name"\path\to\log\file\Computers_not-used-for-$No_Of_Months-months-$current_date.txt"
+        "Device Name : $j `n" + "IP Address : $IP_Address `n" + "Last logon Date : $last_logon `n" + "old OU : $DistName `n" >> "\\"server-name"\path\to\log\file\Computers_not-used-for-$No_Of_Months-months-$current_date.txt"
         Move-ADObject -Identity "$DistName" -TargetPath "OU=Not-Active-Computers,DC=CAIROMETRO,DC=LOCAL"
 }
 
