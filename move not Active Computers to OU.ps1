@@ -3,6 +3,7 @@
 $No_Of_Months = 6
 $d = (Get-Date).AddMonths(-$No_Of_Months)
 $srv_name = "server01"  <# your sever where you put ( log file, exception list ) on, write even the server name or it's Ip address #>
+
 <# Bring exception list file and put it variable #>
 $filePath = "\\$srv_name\path\to\the\Exception-list.txt"
 [System.Collections.ArrayList]$exception_list = Get-Content $filePath
