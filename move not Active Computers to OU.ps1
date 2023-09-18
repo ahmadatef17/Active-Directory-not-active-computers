@@ -2,9 +2,9 @@
 <# below the computer that is not used for that limit apply the further steps on #>
 $No_Of_Months = 6
 $d = (Get-Date).AddMonths(-$No_Of_Months)
-
+$srv_name = "server01"  <# your sever where you put ( log file, exception list ) on, write even the server name or it's Ip address #>
 <# Bring exception list file and put it variable #>
-$filePath = "\\"server-name"\path\to\the\Exception-list.txt"
+$filePath = "\\$srv_name\path\to\the\Exception-list.txt"
 [System.Collections.ArrayList]$exception_list = Get-Content $filePath
 <# Bring Not Used Computers for "EX: last 6 months" #>
 [System.Collections.ArrayList]$Not_Used_Computers= Get-ADComputer -Filter '(LastLogonDate -lt $d)' -Properties LastLogonDate | ForEach-Object {$_.Name}
@@ -71,7 +71,7 @@ $current_dateAndtime = $current_dateAndtime.Replace("+",":")
 $current_date = [datetime]::now.tostring("yyyy-MM-dd")
 
 if ($x -ne 0) {
-"Run At : " + $current_dateAndtime + "`n---------------------------------" >>  "\\"server-name"\path\to\log\file\Computers_not-used-for-$No_Of_Months-months-$current_date.txt"
+"Run At : " + $current_dateAndtime + "`n---------------------------------" >>  "\\$srv_name\path\to\log\file\Computers_not-used-for-$No_Of_Months-months-$current_date.txt"
 }
 
 for($k=0 ; $k -lt $x ; $k++)
@@ -82,7 +82,7 @@ for($k=0 ; $k -lt $x ; $k++)
         $IP_Address = Get-ADComputer -Identity $j -Properties IPv4Address | ForEach-Object {$_.IPv4Address}
         $last_logon = Get-ADComputer -Identity $j -Properties LastLogonDate | ForEach-Object {$_.LastLogonDate}
 	$DistName   = Get-ADComputer -Identity $j -Properties DistinguishedName | ForEach-Object {$_.DistinguishedName}
-        "Device Name : $j `n" + "IP Address : $IP_Address `n" + "Last logon Date : $last_logon `n" + "old OU : $DistName `n" >> "\\"server-name"\path\to\log\file\Computers_not-used-for-$No_Of_Months-months-$current_date.txt"
+        "Device Name : $j `n" + "IP Address : $IP_Address `n" + "Last logon Date : $last_logon `n" + "old OU : $DistName `n" >> "\\$srv_name\path\to\log\file\Computers_not-used-for-$No_Of_Months-months-$current_date.txt"
         Move-ADObject -Identity "$DistName" -TargetPath "OU=Not-Active-Computers,DC=CAIROMETRO,DC=LOCAL"
 }
 
