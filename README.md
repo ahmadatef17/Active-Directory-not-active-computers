@@ -29,8 +29,8 @@ the computers that are moved to 'not-active_computer'
 
 5- Then the technical support guy will disable all the computers, if no complain occured, then he will delete those computers.
 
-GOD WILLING, after that we will have active directory clear of not active computers.
-good end right.
+<H4>GOD WILLING, after that we will have active directory clear of not active computers.
+good end right.</H4>
 
 
 📂File 2 :
