@@ -4,6 +4,7 @@
 <# move not Active Computers to OU.ps1 #>
 
 why writting this powershell script ?
+
 1- in our company the active directory was full with computers that are not active
 > Even deploying new OS on physical computer and naming the computer different name,
 Then add it to Active Directory, so the old entity with the old name is left away in Active Directory. 
