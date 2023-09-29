@@ -23,11 +23,15 @@ except those devices while running this script.
 4- At the end create log file that contain
 the computers that are moved to 'not-active_computer'
 > name,
+
 > last log on date,
+
 > ip address,
+
 > old OU. 'before moving'
 
-5- Then the technical support guy will disable all the computers, if no complain occured, then he will delete those computers.
+5- Then the technical support guy will disable all the computers, if no complain occured in let's say 1 month,
+then delete those computers.
 
 <H4>GOD WILLING, after that we will have active directory clear of not active computers.
 good end right.</H4>
@@ -40,7 +44,7 @@ put the Servers & important devices here, that shouldn't be moved by this script
 (Those devices will be safe from this script)
 
 📂File 3 :
-<# get OU Computers count.ps1 #>
+<# Extra/get OU Computers count.ps1 #>
 
 "Not Related but, extra feature if you want to count the computer in Specific OU in your Active Directory"
 
