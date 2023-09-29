@@ -1,7 +1,10 @@
-📰 # Quarantine-Active-Directory-not-active-computers 
 <picture>
   <img alt="Quarantine Not-Active-Computers from Active Directory" src="https://i.imgur.com/aG595ee.png">
 </picture>
+
+
+📰 # Quarantine-Active-Directory-not-active-computers 
+
 
 📂File 1 :
 <# move not Active Computers to OU.ps1 #>
