@@ -1,5 +1,5 @@
 <picture>
-  <img alt="Quarantine Not-Active-Computers from Active Directory" src="https://i.imgur.com/aG595ee.png">
+  <img alt="Quarantine Not-Active-Computers from Active Directory" src="https://i.imgur.com/zZjeMLN.png">
 </picture>
 
 
