@@ -1,58 +1,83 @@
+# Quarantine-Active-Directory-not-active-computers 
+<dl>
+  
 <picture>
   <img alt="Quarantine Not-Active-Computers from Active Directory" src="https://i.imgur.com/aG595ee.png">
 </picture>
 
-
-📰 # Quarantine-Active-Directory-not-active-computers 
-
-
-📂File 1 :
-<# move not Active Computers to OU.ps1 #>
-
+<dt>📂File 1 : move not Active Computers to OU.ps1 </dt>
+<dd><br>
+  
 why writting this powershell script ?
-
-1- in our company the active directory was full with computers that are not active
-> Even deploying new OS on physical computer and naming the computer different name,
-Then add it to Active Directory, so the old entity with the old name is left away in Active Directory. 
+<br>
+> In our company the active directory was full with computers that are not active <br>
+> Even deploying new OS on physical computer and naming the computer different name,<br>
+> Then add it to Active Directory, so the old entity with the old name is left away in Active Directory. <br>
 
 OR
 
 > Entities "computers" that are corrupted or not used for a lot of time.
 
-2- So this powershell script select all computers that their "last login date" exceed for example 6 moths -you can modify the number-
-then move them to new Organization Unit (OU) named 'not-active_computer'
+<H4>Before Running this Script </H4> 
 
-3- During this operation the script go to file named 'exception-list.txt'
-that include ( servers , important devices ) names, That I don't want to be touched or moved
-except those devices while running this script.
+>Don't forget to create Organization Unit 'OU' in Active Directory Directly after in Domain-name container,
+>
+>and name it "Not-Active-Computers", so the path will be for-example:
+>
+>"OU=Not-Active-Computers,DC=my-Domain,DC=LOCAL" or "my-Domain.local/Not-Active-Computers"
 
-4- At the end create log file that contain
-the computers that are moved to 'not-active_computer'
-> name,
 
-> last log on date,
+<H4>GOD Willing, This powershell script will do the following :</H4>
 
-> ip address,
+1- Select all computers that their "last login date" exceed for example 6 months <br>
+&ensp; &ensp;"You can modify the number : 3 months or whatever you want",<br>
+&ensp; &ensp;Then move them to new Organization Unit (OU) named 'Not-Active-Computers'
 
+2- During this operation the script :
+> 2.1- The script go to file named 'exception-list.txt' <br>
+> &ensp; &ensp; &ensp;that include ( servers , important devices ) names,<br>
+> &ensp; &ensp; &ensp;That I don't want to be touched or moved "exclude those computers while running this script".
+
+> 2.2- The script will ignore all the computers inside "Not-Active-Computers" OU <br>
+> &ensp; &ensp; &ensp;when counting the computers that Need to be Moved.
+
+3- Move computers should be moved, to "Not-Active-Computers" OU.
+
+4- At the end it creates log file that contains computers moved to'Not-Active-Computers' OU folloing Data :
+> name,<br>
+> last log on date,<br>
+> ip address,<br>
 > old OU. 'before moving'
 
-5- Then the technical support guy will disable all the computers, if no complain occured in let's say 1 month,
+<H4> After Running this Script </H4>
+
+You will disable all the computers in "Not-Active-Computers" OU , if no complain occured in let's say 1 month,
 then delete those computers.
+</dd>
+<br>
 
-<H4>GOD WILLING, after that we will have active directory clear of not active computers.
-good end right.</H4>
+$${\color{green}\Large GOD \space WILLING, \space after \space that \space we \space will \space have \space active \space directory \space clear \space of \space not \space active \space Computers.}$$
 
+$${\color{green}\Large good \space end \space right.}$$
 
-📂File 2 :
-<# Exception-list.txt #>
+<br>
+📜file 1 Credits : <br>
+&ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; https://activedirectorypro.com/get-adcomputer-list-computers/ <br>
+https://stackoverflow.com/questions/37603837/powershell-where-lastlogondate-is-over-90-days-from-today<br>
+https://community.spiceworks.com/topic/2001760-powershell-script-for-enabled-users-lastlogondate-30-days/ <br>
+https://activedirectorypro.com/last-logon-time/
+<br>
+<br>
+<dt>📂File 2 : Exception-list.txt</dt>
+<dd>
+  &ensp; &ensp; &ensp;Put the important dvices here, that shouldn't be moved by this script.<br>
+&ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; &ensp; (Those devices will be safe from this script)
+</dd>
 
-put the Servers & important devices here, that shouldn't be moved by this script.
-(Those devices will be safe from this script)
+<dt>📂File 3 : Extra/get OU Computers count.ps1</dt>
+<dd>
+&ensp; &ensp; &ensp;"Not Related but, extra feature if you want to count the the computers in Specific OU in your Active Directory"
 
-📂File 3 :
-<# Extra/get OU Computers count.ps1 #>
-
-"Not Related but, extra feature if you want to count the computer in Specific OU in your Active Directory"
-
-📜file 3 Credits : 
-https://stackoverflow.com/questions/32484212/get-a-count-of-users-in-a-specific-ou-and-its-sub-ous
+&ensp;📜file 3 Credits : https://stackoverflow.com/questions/32484212/get-a-count-of-users-in-a-specific-ou-and-its-sub-ous
+</dd>
+</dl>
