@@ -3,6 +3,8 @@
 $No_Of_Months = 6
 $d = (Get-Date).AddMonths(-$No_Of_Months)
 $srv_name = "server01"  <# your sever where you put ( log file, exception list ) on, write even the server name or it's Ip address #>
+$domin_pt1= "stc"	<# Here Enter part one of your Domain Name, if your domain name is stc.local ,then enter "stc" #>
+$domin_pt2= "local"	<# Here Enter part two of your Domain Name, if your domain name is stc.local ,then enter "local" #>
 
 <# Bring exception list file and put it variable #>
 $filePath = "\\$srv_name\path\to\the\Exception-list.txt"
@@ -42,7 +44,7 @@ for($d=0 ; $d -lt $b ; $d++)
   { 
     $z=$Not_Used_Computers[$d]
     $i="DistinguishedName -like "
-    $v="CN=$z,OU=Not-Active-Computers,DC=CAIROMETRO,DC=LOCAL"
+    $v="CN=$z,OU=Not-Active-Computers,DC=$domin_pt1,DC=$domin_pt2"
     $v=$v.Replace(" ",",")
     $m=" -AND (Name -like "
     $y="($i"+'"'+"$v"+'")'+"$m"+'"'+"$z"+'"'+")"
@@ -84,7 +86,7 @@ for($k=0 ; $k -lt $x ; $k++)
         $last_logon = Get-ADComputer -Identity $j -Properties LastLogonDate | ForEach-Object {$_.LastLogonDate}
 	$DistName   = Get-ADComputer -Identity $j -Properties DistinguishedName | ForEach-Object {$_.DistinguishedName}
         "Device Name : $j `n" + "IP Address : $IP_Address `n" + "Last logon Date : $last_logon `n" + "old OU : $DistName `n" >> "\\$srv_name\path\to\log\file\Computers_not-used-for-$No_Of_Months-months-$current_date.txt"
-        Move-ADObject -Identity "$DistName" -TargetPath "OU=Not-Active-Computers,DC=CAIROMETRO,DC=LOCAL"
+        Move-ADObject -Identity "$DistName" -TargetPath "OU=Not-Active-Computers,DC=$domin_pt1,DC=$domin_pt2"
 }
 
 write-host "Devices After Removing Devices From 'Not-Active-Computers' OU from the list:"
