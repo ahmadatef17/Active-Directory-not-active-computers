@@ -66,9 +66,9 @@ then delete those computers.
 </dd>
 <br>
 
-$${\color{green}\Large GOD \space WILLING, \space after \space that \space we \space will \space have \space active \space directory \space clear \space of \space not \space active}$$
+$${\color{green}\Large GOD \space WILLING, \space after \space that \space we \space will \space have \space active \space directory}$$
 
-$${\color{green}\Large Computers \space ,good \space end \space right.}$$
+$${\color{green}\Large clear \space of \space not \space active \space Computers.}$$
 
 <br>
 📜file 1 Credits : <br>
